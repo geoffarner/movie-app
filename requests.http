@@ -1,0 +1,4 @@
+### index
+GET http://localhost:3000/movies.json
+### show
+GET http://localhost:3000/movies/1.json

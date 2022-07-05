@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  def actor
-    return Actor(id:)
-  end
-  get "/movies" => "movies#index"
+  get "/movies" => "movie#index"
+  get "/movies/:id" => "movie#show"
 end
-
