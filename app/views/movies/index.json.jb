@@ -1,0 +1,6 @@
+@movies.map do |movie|
+  {
+    id: movie.id,
+    url: movie_url(movie, format: :json)
+  }
+end

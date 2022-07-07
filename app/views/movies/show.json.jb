@@ -1,0 +1,5 @@
+{
+  id: @movie.id,
+  created_at: @movie.created_at,
+  updated_at: @movie.updated_at
+}
