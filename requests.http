@@ -9,14 +9,18 @@ GET http://localhost:3000/actors/1.json
 ### create movie
 POST http://localhost:3000/movies.json 
 Content-Type: application/json
+
 {
   "title": "test title",
-  "name": "test name", 
-  "description": "test description"
+  "year": "test year", 
+  "plot": "test plot",
+  "director": "test director",
+  "english": ""
 }
 ### create actor
 POST http://localhost:3000/actors.json
 Content-Type: application/json
+
 {
   "first_name": "test first name",
   "last_name": "test last name",
@@ -26,13 +30,13 @@ Content-Type: application/json
 PATCH http://localhost:3000/movies/2.json
 Content-Type: application/json
 
-{"name": "Matrix"}
+{"title": "Tombstone"}
 ### update actor
 PATCH http://localhost:3000/actors/2.json
 Content-Type: application/json
 
-{"first_name": "Mud"}
+{"first_name": "Paul"}
 ### movie destroy
-DELETE http://localhost:3000/movies/2.json
+DELETE http://localhost:3000/movies/4.json
 ### actor destroy
-DELETE http://localhost:3000/actors/2.json
+DELETE http://localhost:3000/actors/13.json
