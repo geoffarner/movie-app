@@ -11,20 +11,20 @@ class ActorController < ActionController::API
   end
 
   def create
-    Actor.create(
+    @actor = Actor.new(
       first_name: params["first_name"],
       last_name: params["last_name"],
       known_for: params["known_for"],
       age: params["age"],
       gender: params[""],
-      if actor :save
-        render json: actor.as_json
-      else
-        render json: { errors: actor.errors full_message }
-        status: unprocessable_entry
-      end
+
     )
-    render template: "actors/show"
+    if @actor.save
+      render :show
+    else
+      render json: { errors: @actor.errors.full_messages }, status: 418
+    end
+    render :show
   end
 
   def update
@@ -36,15 +36,14 @@ class ActorController < ActionController::API
     @actors.known_for = params["known_for"] || @actors.known_for
     @actors.gender = params["gender"] || @actors.gender
     @actors.age = params["age"] || @actors.age
-    @actors.save
-    if actor :save #happy path
-      render json: actor.as_json
+
+    if @actor.save #happy path
+      render json: @actor.as_json
     else #unhappy path
-      render json: { errors: actor.errors full_messages }
-      status: unprocessable_entry
+      render json: { errors: @actor.errors.full_messages }
     end
 
-    render template: "actors/show"
+    render :show
   end
 
   def destroy

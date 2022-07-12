@@ -17,16 +17,16 @@ class MovieController < ApplicationController
       plot: params["plot"],
       director: params["director"],
       english: params[""],
-      if movie :save
-        render json: movie.as_json
-      else
-        render json: { errors: movie.errors full_message }
-        status: unprocessable_entry
-      end
+    
     )
     render template: "movies/show"
   end
-
+  if @movie.save
+    render :show
+  else
+    render json: { errors: @movie.errors.full_message }
+    status: 418
+  end
   def update
     movies_id = params["id"]
     @movies = Movie.find_by(id: movies_id)
@@ -37,15 +37,15 @@ class MovieController < ApplicationController
     @movies.director = params["director"] || @movies.director
     @movies.english = parmams[""] || @movies.english
     @movies.save
-    if movie :save
-      render json: movie.as_json
-    else
-      render json: { errors: movie.errors full_message }
-      status: unprocessable_entry
-    end
-    render template: "movies/show"
+    
   end
-
+  if @movie.save
+    render :show
+  else
+    render json: { errors: @movie.errors.full_message }
+    status: 418
+  end
+    render template: "movies/show"
   def destroy
     movies_id = params["id"]
     movie = Movie.find_by(id: movies_id)
