@@ -17,6 +17,12 @@ class MovieController < ApplicationController
       plot: params["plot"],
       director: params["director"],
       english: params[""],
+      if movie :save
+        render json: movie.as_json
+      else
+        render json: { errors: movie.errors full_message }
+        status: unprocessable_entry
+      end
     )
     render template: "movies/show"
   end
@@ -31,6 +37,12 @@ class MovieController < ApplicationController
     @movies.director = params["director"] || @movies.director
     @movies.english = parmams[""] || @movies.english
     @movies.save
+    if movie :save
+      render json: movie.as_json
+    else
+      render json: { errors: movie.errors full_message }
+      status: unprocessable_entry
+    end
     render template: "movies/show"
   end
 

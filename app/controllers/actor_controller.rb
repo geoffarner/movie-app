@@ -16,7 +16,13 @@ class ActorController < ActionController::API
       last_name: params["last_name"],
       known_for: params["known_for"],
       age: params["age"],
-      gender: params[""]
+      gender: params[""],
+      if actor :save
+        render json: actor.as_json
+      else
+        render json: { errors: actor.errors full_message }
+        status: unprocessable_entry
+      end
     )
     render template: "actors/show"
   end
@@ -31,6 +37,13 @@ class ActorController < ActionController::API
     @actors.gender = params["gender"] || @actors.gender
     @actors.age = params["age"] || @actors.age
     @actors.save
+    if actor :save #happy path
+      render json: actor.as_json
+    else #unhappy path
+      render json: { errors: actor.errors full_messages }
+      status: unprocessable_entry
+    end
+
     render template: "actors/show"
   end
 
