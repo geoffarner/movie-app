@@ -1,22 +1,22 @@
-class ActorController < ActionController::API
+class ActorController < ApplicationController
   def index
     @actors = Actor.all
-    render template: "actors/index"
+    render :index
   end
 
   def show
-    actors_id = params["id"]
-    @actors = Actor.find_by(id: actors_id)
-    render template: "actors/show"
+    @actors = Actor.find_by(id: params[:id])
+    render :show
   end
 
   def create
     @actor = Actor.new(
-      first_name: params["first_name"],
-      last_name: params["last_name"],
-      known_for: params["known_for"],
-      age: params["age"],
-      gender: params[""],
+      first_name: params[:first_name],
+      last_name: params[:last_name],
+      known_for: params[:known_for],
+      age: params[:age],
+      gender: params[:gender],
+      movie_id: params[:movie_id],
 
     )
     if @actor.save
@@ -24,31 +24,27 @@ class ActorController < ActionController::API
     else
       render json: { errors: @actor.errors.full_messages }, status: 418
     end
-    render :show
   end
 
   def update
-    actors_id = params["id"]
-    @actors = Actor.find_by(id: actors_id)
+    @actor = Actor.find_by(id: params[:id])
 
-    @actors.first_name = params["first_name"] || @actors.first_name
-    @actors.last_name = params["last_name"] || @actors.last_name
-    @actors.known_for = params["known_for"] || @actors.known_for
-    @actors.gender = params["gender"] || @actors.gender
-    @actors.age = params["age"] || @actors.age
-
+    @actor.first_name = params[:first_name] || @actor.first_name
+    @actor.last_name = params[:last_name] || @actor.last_name
+    @actor.known_for = params[:known_for] || @actor.known_for
+    @actor.gender = params[:gender] || @actor.gender
+    @actor.age = params[:age] || @actor.age
+    @actor.movie_id = params[:movie_id] || @actor.movie_id
     if @actor.save #happy path
-      render json: @actor.as_json
+      render :show
     else #unhappy path
-      render json: { errors: @actor.errors.full_messages }
+      render json: { errors: @actor.errors.full_messages },
+             status: 418
     end
-
-    render :show
   end
 
   def destroy
-    actors_id = params["id"]
-    actor = Actor.find_by(id: actors_id)
+    actor = Actor.find_by(id: params[:id])
     actor.destroy
     render json: { message: "Actor deleted" }
   end

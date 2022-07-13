@@ -5,6 +5,6 @@
     last_name: actor.last_name,
     known_for: actor.known_for,
     age: actor.age,
-    gender: actor.gender
+    gender: actor.gender,
   }
 end

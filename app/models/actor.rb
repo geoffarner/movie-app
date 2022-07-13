@@ -1,6 +1,7 @@
 class Actor < ApplicationRecord
-  validates_length_of :first_name, minimum: 2
-  validates_length_of :last_name, minimum: 2
+  belongs_to :movie
+  validates :first_name, minimum: 2
+  validates :last_name, minimum: 2
   validates :known_for, presence: true
   validates :age, minimum: 13
 end
