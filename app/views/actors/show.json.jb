@@ -1,10 +1,10 @@
 {
-  id: @actors.id,
-  first_name: @actors.first_name,
-  last_name: @actors.last_name,
-  known_for: @actors.known_for,
-  age: @actors.age,
-  gender: @actors.gender,
-  created_at: @actors.created_at,
-  updated_at: @actors.updated_at
+  id: @actor.id,
+  first_name: @actor.first_name,
+  last_name: @actor.last_name,
+  known_for: @actor.known_for,
+  age: @actor.age,
+  gender: @actor.gender,
+  created_at: @actor.created_at,
+  updated_at: @actor.updated_at
 }

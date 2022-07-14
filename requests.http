@@ -6,6 +6,7 @@ GET http://localhost:3000/actors.json
 GET http://localhost:3000/movies/1.json
 ### show actor
 GET http://localhost:3000/actors/1.json
+
 ### create movie
 POST http://localhost:3000/movies.json 
 Content-Type: application/json
@@ -24,19 +25,23 @@ Content-Type: application/json
 {
   "first_name": "test first name",
   "last_name": "test last name",
-  "known_for": "test known for"
+  "known_for": "test known for",
+  "age": 15,
+  "movie_id": 1
 }
 ### update movie
-PATCH http://localhost:3000/movies/2.json
+PATCH http://localhost:3000/movies/6.json
 Content-Type: application/json
 
 {"title": "Tombstone"}
 ### update actor
-PATCH http://localhost:3000/actors/2.json
+PATCH http://localhost:3000/actors/14.json
 Content-Type: application/json
 
 {"first_name": "Paul"}
 ### movie destroy
-DELETE http://localhost:3000/movies/4.json
+DELETE http://localhost:3000/movies/6.json
 ### actor destroy
-DELETE http://localhost:3000/actors/13.json
+DELETE http://localhost:3000/actors/14.json
+
+
