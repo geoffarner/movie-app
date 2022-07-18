@@ -14,6 +14,6 @@ Rails.application.routes.draw do
   ## destroy
   delete "/movies/:id" => "movies#destroy"
   delete "/actors/:id" => "actors#destroy"
-
-  get "/test" => "movies#test"
+  ## user create
+  post "/users" => "users#create"
 end
