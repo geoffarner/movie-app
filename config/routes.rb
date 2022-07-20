@@ -16,4 +16,6 @@ Rails.application.routes.draw do
   delete "/actors/:id" => "actors#destroy"
   ## user create
   post "/users" => "users#create"
+  ## movie genre create
+  post "/movie_genre" => "movie_genre#create"
 end
