@@ -48,12 +48,16 @@ POST http://localhost:3000/users.json
 Content-Type: application/json
 
 {
-  "name": "MacGregor",
-  "email": "mac@example.com",
+  "name": "mike",
+  "email": "mike@example.com",
   "password": "password",
   "password_confirmation": "password"
 }
+### Sessions create (login)
+POST http://localhost:3000/sessions.json
+Content-Type: application/json
 
+{ "email": "mike@example.com", "password": "password"}
 ### movie genre create
 POST http://localhost:3000/movie_genre.json
 Content-Type: application/json
